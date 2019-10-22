@@ -1,12 +1,12 @@
-workdir = './model/model001'
+workdir = './model/model_pnasnet5large'
 seed = 20
 apex = False
 
-n_fold = 5
+n_fold = 1
 epoch = 100
 resume_from = None
 
-batch_size = 32
+batch_size = 10
 num_workers = 4
 imgsize = (512, 512) #(height, width)
 
@@ -23,7 +23,7 @@ optim = dict(
 )
 
 model = dict(
-    name='se_resnext50_32x4d',
+    name='pnasnet5large',
     pretrained='imagenet',
     n_output=6,
 )
