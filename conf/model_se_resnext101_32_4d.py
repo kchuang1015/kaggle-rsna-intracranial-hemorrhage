@@ -2,7 +2,7 @@ workdir = './model/model_se_resnext101_32_4d'
 seed = 20
 apex = False
 
-n_fold = 5
+n_fold = 1
 epoch = 100
 resume_from = None
 
