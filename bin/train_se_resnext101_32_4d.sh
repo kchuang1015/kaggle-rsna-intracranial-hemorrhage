@@ -1,4 +1,4 @@
-model=model001_se_resnext101_32_4d
+model=mode_se_resnext101_32_4d
 gpu=3
 fold=0
 conf=./conf/${model}.py
