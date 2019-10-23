@@ -41,7 +41,7 @@ def apply_window_policy(image, row, policy):
     elif policy == 3: # Brain + Subdural + Raw image
         image1 = misc.apply_window(image, 40, 80) # brain
         image2 = misc.apply_window(image, 80, 200) # subdural
-        image3 = image3 # raw 
+        image3 = image # raw 
         image1 = (image1 - 0) / 80
         image2 = (image2 - (-20)) / 200
         image3 = (image3 / 8192)
@@ -51,27 +51,27 @@ def apply_window_policy(image, row, policy):
             image3 - image3.mean(),
         ]).transpose(1,2,0)
     elif policy == 4: #Sigmoid (Brain + Subdural + Bone) Windowing
-        image1 = misc.sigmoid_window_Normaliztion(img, 40, 80) # brain
-        image2 = misc.sigmoid_window_Normaliztion(img, 80, 200) # subdural
-        image3 = misc.sigmoid_window_Normaliztion(img, 600, 2000) # bone
+        image1 = misc.sigmoid_window_Normaliztion(image, 40, 80) # brain
+        image2 = misc.sigmoid_window_Normaliztion(image, 80, 200) # subdural
+        image3 = misc.sigmoid_window_Normaliztion(image, 600, 2000) # bone
         image = np.array([
             image1,
             image2,
             image3,
         ]).transpose(1,2,0)
     elif policy == 5: #Sigmoid (Brain + Subdural + Bone) Windowing without normalization
-        image1 = misc.sigmoid_window(img, 40, 80) # brain
-        image2 = misc.sigmoid_window(img, 80, 200) # subdural
-        image3 = misc.sigmoid_window(img, 600, 2000) # bone
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image2 = misc.sigmoid_window(image, 80, 200) # subdural
+        image3 = misc.sigmoid_window(image, 600, 2000) # bone
         image = np.array([
             image1,
             image2,
             image3,
         ]).transpose(1,2,0)
     elif policy == 6: #Sigmoid (Brain + Subdural + raw) Windowing without normalization
-        image1 = misc.sigmoid_window(img, 40, 80) # brain
-        image2 = misc.sigmoid_window(img, 80, 200) # subdural
-        image3 = misc.sigmoid_window(img, 0, 8192) # raw
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image2 = misc.sigmoid_window(image, 80, 200) # subdural
+        image3 = misc.sigmoid_window(image, 0, 8192) # raw
         image = np.array([
             image1,
             image2,
