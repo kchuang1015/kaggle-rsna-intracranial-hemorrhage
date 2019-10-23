@@ -2,11 +2,11 @@ workdir = './model/model_se_resnext101_32_4d'
 seed = 20
 apex = False
 
-n_fold = 1
+n_fold = 5
 epoch = 100
 resume_from = None
 
-batch_size = 32
+batch_size = 24
 num_workers = 4
 imgsize = (512, 512) #(height, width)
 
@@ -52,7 +52,7 @@ window_policy = 2
 data = dict(
     train=dict(
         dataset_type='CustomDataset',
-        annotations='./cache/train.pkl',
+        annotations='./cache/train_folds.pkl',
         imgdir='./input/stage_1_train_images',
         imgsize=imgsize,
         n_grad_acc=1,

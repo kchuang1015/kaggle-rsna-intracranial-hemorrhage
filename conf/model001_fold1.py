@@ -2,7 +2,7 @@ workdir = './model/model001_fold1'
 seed = 20
 apex = False
 
-n_fold = 1
+n_fold = 5
 epoch = 100
 resume_from = None
 
