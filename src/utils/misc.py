@@ -31,6 +31,22 @@ def apply_window(image, center, width):
     image[image > max_value] = max_value
     return image
 
+def sigmoid_window(image, window_center, window_width, U=1.0, eps=(1.0 / 255.0)):
+    ue = np.log((U / eps) - 1.0)
+    W = (2 / window_width) * ue
+    b = ((-2 * window_center) / window_width) * ue
+    z = W * image + b
+    image = U / (1 + np.power(np.e, -1.0 * z))
+    return image
+	
+def sigmoid_window_Normaliztion(image, window_center, window_width, U=1.0, eps=(1.0 / 255.0)):
+    ue = np.log((U / eps) - 1.0)
+    W = (2 / window_width) * ue
+    b = ((-2 * window_center) / window_width) * ue
+    z = W * image + b
+    image = U / (1 + np.power(np.e, -1.0 * z))
+    image = (image - np.min(image)) / (np.max(image) - np.min(image))
+    return image
 
 def get_dicom_meta(dicom):
     return {
@@ -42,3 +58,4 @@ def get_dicom_meta(dicom):
         'RescaleIntercept': float(dicom.RescaleIntercept),
         'RescaleSlope': float(dicom.RescaleSlope), # all same (1.0)
     }
+
