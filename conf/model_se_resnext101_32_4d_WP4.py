@@ -1,12 +1,12 @@
 workdir = './model/model_se_resnext101_32_4d_WP4'
 seed = 20
-apex = False
+apex = True
 
 n_fold = 5
 epoch = 100
 resume_from = None
 
-batch_size = 64
+batch_size = 48
 num_workers = 4
 imgsize = (512, 512) #(height, width)
 
