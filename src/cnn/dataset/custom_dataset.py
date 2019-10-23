@@ -38,7 +38,7 @@ def apply_window_policy(image, row, policy):
             image2 - image2.mean(),
             image3 - image3.mean(),
         ]).transpose(1,2,0)
-	elif policy == 3: # Brain + Subdural + Raw image
+    elif policy == 3: # Brain + Subdural + Raw image
         image1 = misc.apply_window(image, 40, 80) # brain
         image2 = misc.apply_window(image, 80, 200) # subdural
         image3 = image3 # raw 
@@ -50,7 +50,7 @@ def apply_window_policy(image, row, policy):
             image2 - image2.mean(),
             image3 - image3.mean(),
         ]).transpose(1,2,0)
-	elif policy == 4: #Sigmoid (Brain + Subdural + Bone) Windowing
+    elif policy == 4: #Sigmoid (Brain + Subdural + Bone) Windowing
         image1 = misc.sigmoid_window_Normaliztion(img, 40, 80) # brain
         image2 = misc.sigmoid_window_Normaliztion(img, 80, 200) # subdural
         image3 = misc.sigmoid_window_Normaliztion(img, 600, 2000) # bone
@@ -59,7 +59,7 @@ def apply_window_policy(image, row, policy):
             image2,
             image3,
         ]).transpose(1,2,0)
-	elif policy == 5: #Sigmoid (Brain + Subdural + Bone) Windowing without normalization
+    elif policy == 5: #Sigmoid (Brain + Subdural + Bone) Windowing without normalization
         image1 = misc.sigmoid_window(img, 40, 80) # brain
         image2 = misc.sigmoid_window(img, 80, 200) # subdural
         image3 = misc.sigmoid_window(img, 600, 2000) # bone
@@ -68,7 +68,7 @@ def apply_window_policy(image, row, policy):
             image2,
             image3,
         ]).transpose(1,2,0)
-	elif policy == 6: #Sigmoid (Brain + Subdural + raw) Windowing without normalization
+    elif policy == 6: #Sigmoid (Brain + Subdural + raw) Windowing without normalization
         image1 = misc.sigmoid_window(img, 40, 80) # brain
         image2 = misc.sigmoid_window(img, 80, 200) # subdural
         image3 = misc.sigmoid_window(img, 0, 8192) # raw
