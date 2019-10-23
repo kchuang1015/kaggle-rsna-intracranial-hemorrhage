@@ -36,10 +36,10 @@ def sigmoid_window(image, window_center, window_width, U=1.0, eps=(1.0 / 255.0))
     W = (2 / window_width) * ue
     b = ((-2 * window_center) / window_width) * ue
     z = W * image + b
-	if z > 50:
-		z = 50
-	elif z < -50:
-		z = -50
+    if z > 50:
+        z = 50
+    elif z < -50:
+        z = -50
     image = U / (1 + np.power(np.e, -1.0 * z))
     return image
 	
@@ -48,10 +48,10 @@ def sigmoid_window_Normaliztion(image, window_center, window_width, U=1.0, eps=(
     W = (2 / window_width) * ue
     b = ((-2 * window_center) / window_width) * ue
     z = W * image + b
-	if z > 50:
-		z = 50
-	elif z < -50:
-		z = -50
+    if z > 50:
+        z = 50
+    elif z < -50:
+        z = -50
     image = U / (1 + np.power(np.e, -1.0 * z))
     image = (image - np.min(image)) / (np.max(image) - np.min(image))
     return image
