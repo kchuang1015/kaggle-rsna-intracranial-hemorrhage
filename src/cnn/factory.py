@@ -15,8 +15,8 @@ from .utils.logger import log
 
 
 def get_loss(cfg):
-    #loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
-    loss = getattr(nn, cfg.loss.name)(weight=torch.FloatTensor([2,1,1,1,1,1]).cuda(), **cfg.loss.params)
+    loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
+    #loss = getattr(nn, cfg.loss.name)(weight=torch.FloatTensor([2,1,1,1,1,1]).cuda(), **cfg.loss.params)
     log('loss: %s' % cfg.loss.name)
     return loss
 

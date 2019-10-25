@@ -1,12 +1,12 @@
-workdir = './model/model001'
+workdir = './model/model_se_resnext101_32_4d_WP5'
 seed = 20
-apex = False
+apex = True
 
 n_fold = 5
 epoch = 100
 resume_from = None
 
-batch_size = 32
+batch_size = 48
 num_workers = 4
 imgsize = (512, 512) #(height, width)
 
@@ -19,11 +19,12 @@ optim = dict(
     name='Adam',
     params=dict(
         lr=1e-4,
+		weight_decay=1e-4,
     ),
 )
 
 model = dict(
-    name='se_resnext50_32x4d',
+    name='se_resnext101_32x4d',
     pretrained='imagenet',
     n_output=6,
 )
@@ -31,7 +32,7 @@ model = dict(
 scheduler = dict(
     name='MultiStepLR',
     params=dict(
-        milestones=[2,4],
+        milestones=[3,6],
         gamma=0.1,
     ),
 )
@@ -47,7 +48,7 @@ contrast = dict(name='RandomBrightnessContrast', params=dict(brightness_limit=0.
 totensor = dict(name='ToTensor', params=dict(normalize=normalize))
 rotate = dict(name='Rotate', params=dict(limit=30, border_mode=0), p=0.7)
 
-window_policy = 2
+window_policy = 5
 
 data = dict(
     train=dict(
