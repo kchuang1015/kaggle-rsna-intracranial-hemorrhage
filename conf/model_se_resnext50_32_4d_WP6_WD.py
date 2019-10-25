@@ -16,10 +16,10 @@ loss = dict(
 )
 
 optim = dict(
-    name='Adam',
+    name='AdamW',
     params=dict(
         lr=1e-4,
-		weight_decay=1e-4,
+		weight_decay=1e-3,
     ),
 )
 
