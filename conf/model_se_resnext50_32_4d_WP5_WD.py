@@ -1,4 +1,4 @@
-workdir = './model/model_se_resnext50_32_4d_WP5'
+workdir = './model/model_se_resnext50_32_4d_WP5_WD'
 seed = 20
 apex = True
 
