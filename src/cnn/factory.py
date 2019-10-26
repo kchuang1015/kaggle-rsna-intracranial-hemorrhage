@@ -14,10 +14,12 @@ from .transforms.transforms import RandomResizedCrop
 from .utils.logger import log
 
 from .utils.focal_loss import FocalLoss
+import kornia
 
 def get_loss(cfg):
     if cfg.loss.name is 'FocalLoss':
-        loss = (FocalLoss)(**cfg.loss.params)
+        #loss = (FocalLoss)(**cfg.loss.params)
+		loss = kornia.losses.focal_loss()
     else:
         loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
 	#loss = getattr(nn, cfg.loss.name)(weight=torch.FloatTensor([2,1,1,1,1,1]).cuda(), **cfg.loss.params)
