@@ -12,7 +12,9 @@ imgsize = (512, 512) #(height, width)
 
 loss = dict(
     name='FocalLoss',
-    params=dict(),
+    params=dict(
+		class_num=6
+	),
 )
 
 optim = dict(
