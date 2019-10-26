@@ -1,4 +1,4 @@
-model=model_pnasnet5large_WP4_WD_NPre_NPre
+model=model_pnasnet5large_WP4_WD_NPre
 gpu=2
 fold=0
 conf=./conf/${model}.py
