@@ -13,10 +13,14 @@ from .dataset.custom_dataset import CustomDataset
 from .transforms.transforms import RandomResizedCrop
 from .utils.logger import log
 
+from utils.focal_loss import FocalLoss
 
 def get_loss(cfg):
-    loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
-    #loss = getattr(nn, cfg.loss.name)(weight=torch.FloatTensor([2,1,1,1,1,1]).cuda(), **cfg.loss.params)
+    if cfg.loss.name is 'FocalLoss'
+		loss = (FocalLoss)(**cfg.loss.params)
+	else:
+		loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
+		#loss = getattr(nn, cfg.loss.name)(weight=torch.FloatTensor([2,1,1,1,1,1]).cuda(), **cfg.loss.params)
     log('loss: %s' % cfg.loss.name)
     return loss
 
