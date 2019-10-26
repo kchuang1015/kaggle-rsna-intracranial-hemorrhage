@@ -16,7 +16,7 @@ from .utils.logger import log
 from utils.focal_loss import FocalLoss
 
 def get_loss(cfg):
-    if cfg.loss.name is 'FocalLoss'
+    if cfg.loss.name is 'FocalLoss':
 		loss = (FocalLoss)(**cfg.loss.params)
 	else:
 		loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
