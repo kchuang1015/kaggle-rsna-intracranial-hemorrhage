@@ -18,9 +18,9 @@ import kornia
 
 def get_loss(cfg):
     if cfg.loss.name is 'FocalLoss':
-        #loss = (FocalLoss)(**cfg.loss.params)
-        args = {"alpha": 0.5, "gamma": 2.0, "reduction": 'mean'}
-        loss = kornia.losses.focal_loss(*args)
+        loss = (FocalLoss)(**cfg.loss.params)
+        #args = {"alpha": 0.5, "gamma": 2.0, "reduction": 'mean'}
+        #loss = kornia.losses.focal_loss(*args)
     else:
         loss = getattr(nn, cfg.loss.name)(**cfg.loss.params)
 	#loss = getattr(nn, cfg.loss.name)(weight=torch.FloatTensor([2,1,1,1,1,1]).cuda(), **cfg.loss.params)
