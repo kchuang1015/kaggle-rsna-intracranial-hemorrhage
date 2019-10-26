@@ -1,12 +1,12 @@
 workdir = './model/model_inceptionresnetv2_WP3_WD_FL'
 seed = 20
-apex = False
+apex = True
 
 n_fold = 5
 epoch = 100
 resume_from = None
 
-batch_size = 32
+batch_size = 64
 num_workers = 4
 imgsize = (512, 512) #(height, width)
 
