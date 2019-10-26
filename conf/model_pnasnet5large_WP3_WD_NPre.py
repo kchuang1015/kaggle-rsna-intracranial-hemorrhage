@@ -25,6 +25,7 @@ optim = dict(
 
 model = dict(
     name='pnasnet5large',
+	pretrained='',
     n_output=6,
 )
 
