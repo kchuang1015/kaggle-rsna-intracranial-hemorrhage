@@ -2,7 +2,7 @@ model=model_se_resnext101_32_4d_WP5_WD
 gpu=7
 fold=0
 ep=3
-tta=6
+tta=20
 clip=1e-6
 conf=./conf/${model}.py
 
