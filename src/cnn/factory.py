@@ -14,7 +14,7 @@ from .transforms.transforms import RandomResizedCrop
 from .utils.logger import log
 
 from .utils.focal_loss import FocalLoss
-import kornia
+#import kornia
 
 def get_loss(cfg):
     if cfg.loss.name is 'FocalLoss':
