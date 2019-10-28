@@ -1,4 +1,4 @@
-workdir = './model/model_inceptionresnetv2_WP3_WD_FL'
+workdir = './model/model_pnasnet5large_WP2_FL'
 seed = 20
 apex = True
 
@@ -6,7 +6,7 @@ n_fold = 5
 epoch = 100
 resume_from = None
 
-batch_size = 64
+batch_size = 20
 num_workers = 4
 imgsize = (512, 512) #(height, width)
 
@@ -27,7 +27,7 @@ optim = dict(
 )
 
 model = dict(
-    name='inceptionresnetv2',
+    name='pnasnet5large',
     pretrained='imagenet',
     n_output=6,
 )
@@ -51,7 +51,7 @@ contrast = dict(name='RandomBrightnessContrast', params=dict(brightness_limit=0.
 totensor = dict(name='ToTensor', params=dict(normalize=normalize))
 rotate = dict(name='Rotate', params=dict(limit=30, border_mode=0), p=0.7)
 
-window_policy = 3
+window_policy = 2
 
 data = dict(
     train=dict(
