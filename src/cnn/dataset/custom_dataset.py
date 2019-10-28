@@ -77,6 +77,24 @@ def apply_window_policy(image, row, policy):
             image2,
             image3,
         ]).transpose(1,2,0)
+    elif policy == 7: #Sigmoid (multi-channel) Windowing without normalization
+        image1 = misc.sigmoid_window(image, 0, 2048) # brain
+        image2 = misc.sigmoid_window(image, 1024, 2048) # subdural
+        image3 = misc.sigmoid_window(image, 2048, 2048) # raw
+        image = np.array([
+            image1,
+            image2,
+            image3,
+        ]).transpose(1,2,0)
+    elif policy == 8: #Sigmoid (Brain + Subdural + soft tissues) Windowing without normalization
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image2 = misc.sigmoid_window(image, 80, 200) # subdural
+        image3 = misc.sigmoid_window(image, 40, 380) # soft tissues
+        image = np.array([
+            image1,
+            image2,
+            image3,
+        ]).transpose(1,2,0)
     else:
         raise
 
