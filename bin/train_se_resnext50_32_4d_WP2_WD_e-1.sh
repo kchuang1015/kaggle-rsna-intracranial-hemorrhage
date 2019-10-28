@@ -1,5 +1,5 @@
-model=model_se_resnext50_32_4d_WP8_WD_0.1
-gpu=6
+model=model_se_resnext50_32_4d_WP2_WD_e-1
+gpu=0
 fold=0
 conf=./conf/${model}.py
 
