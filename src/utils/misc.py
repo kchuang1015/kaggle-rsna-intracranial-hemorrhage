@@ -24,8 +24,8 @@ def rescale_image(image, slope, intercept):
 
 def rescale_image_normalization(image, slope, intercept):
     image = image * slope + intercept
-	image = (image - image.min()) / (image.max()-image.min())
-	return image
+    image = (image - image.min()) / (image.max()-image.min())
+    return image
 
 
 def apply_window(image, center, width):

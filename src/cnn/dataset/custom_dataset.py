@@ -15,7 +15,7 @@ from ...utils import mappings, misc
 
 def apply_window_policy(image, row, policy):
     if policy == 1:
-		image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
+        image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
         image1 = misc.apply_window(image, 40, 80) # brain
         image2 = misc.apply_window(image, 80, 200) # subdural
         image3 = misc.apply_window(image, row.WindowCenter, row.WindowWidth)
@@ -29,7 +29,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 2:
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.apply_window(image, 40, 80) # brain
+        image1 = misc.apply_window(image, 40, 80) # brain
         image2 = misc.apply_window(image, 80, 200) # subdural
         image3 = misc.apply_window(image, 40, 380) # bone
         image1 = (image1 - 0) / 80
@@ -42,7 +42,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 3: # Brain + Subdural + Raw image
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.apply_window(image, 40, 80) # brain
+        image1 = misc.apply_window(image, 40, 80) # brain
         image2 = misc.apply_window(image, 80, 200) # subdural
         image3 = image # raw 
         image1 = (image1 - 0) / 80
@@ -55,7 +55,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 4: #Sigmoid (Brain + Subdural + Bone) Windowing
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.sigmoid_window_Normaliztion(image, 40, 80) # brain
+        image1 = misc.sigmoid_window_Normaliztion(image, 40, 80) # brain
         image2 = misc.sigmoid_window_Normaliztion(image, 80, 200) # subdural
         image3 = misc.sigmoid_window_Normaliztion(image, 600, 2000) # bone
         image = np.array([
@@ -65,7 +65,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 5: #Sigmoid (Brain + Subdural + Bone) Windowing without normalization
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
         image2 = misc.sigmoid_window(image, 80, 200) # subdural
         image3 = misc.sigmoid_window(image, 600, 2000) # bone
         image = np.array([
@@ -75,7 +75,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 6: #Sigmoid (Brain + Subdural + raw) Windowing without normalization
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
         image2 = misc.sigmoid_window(image, 80, 200) # subdural
         image3 = misc.sigmoid_window(image, 0, 8192) # raw
         image = np.array([
@@ -85,7 +85,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 7: #Sigmoid (multi-channel) Windowing without normalization
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.sigmoid_window(image, 0, 2048) # brain
+        image1 = misc.sigmoid_window(image, 0, 2048) # brain
         image2 = misc.sigmoid_window(image, 1024, 2048) # subdural
         image3 = misc.sigmoid_window(image, 2048, 2048) # raw
         image = np.array([
@@ -95,7 +95,7 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 8: #Sigmoid (Brain + Subdural + soft tissues) Windowing without normalization
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-		image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
         image2 = misc.sigmoid_window(image, 80, 200) # subdural
         image3 = misc.sigmoid_window(image, 40, 380) # soft tissues
         image = np.array([
@@ -103,9 +103,9 @@ def apply_window_policy(image, row, policy):
             image2,
             image3,
         ]).transpose(1,2,0)
-	elif policy == 9: #Sigmoid (multi-channel with max-min image normalization) Windowing without normalization
-		image = rescale_image_normalization(image, slope, intercept)
-		image = np.array([
+    elif policy == 9: #Sigmoid (multi-channel with max-min image normalization) Windowing without normalization
+        image = misc.rescale_image_normalization(image, row.RescaleSlope, row.RescaleIntercept)
+        image = np.array([
             image,
             image,
             image,
