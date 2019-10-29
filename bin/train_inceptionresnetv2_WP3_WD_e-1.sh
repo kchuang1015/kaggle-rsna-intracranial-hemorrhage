@@ -1,5 +1,5 @@
-model=model_inceptionresnetv2_WP4_WD_0.1
-gpu=2
+model=model_inceptionresnetv2_WP3_WD_e-1
+gpu=1
 fold=0
 conf=./conf/${model}.py
 
