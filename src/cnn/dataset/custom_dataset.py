@@ -112,8 +112,8 @@ def apply_window_policy(image, row, policy):
         ]).transpose(1,2,0)
     elif policy == 10: # max-min image normalization, z-score, sigmoid
         image1 = misc.rescale_image_normalization(image, row.RescaleSlope, row.RescaleIntercept)
-		image2 = (image - image.mean()) / image.std()
-		image3 = 1.0 / (1.0 + np.power(np.e, -1.0 * image2))
+        image2 = (image - image.mean()) / image.std()
+        image3 = 1.0 / (1.0 + np.power(np.e, -1.0 * image2))
         image = np.array([
             image1,
             image2,
