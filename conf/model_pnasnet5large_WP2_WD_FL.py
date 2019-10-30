@@ -14,7 +14,7 @@ loss = dict(
     name='FocalLoss',
     params=dict(
 		alpha=1,
-		gamma=2,
+		gamma=1,
 	),
 )
 
