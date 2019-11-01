@@ -41,8 +41,8 @@ def sigmoid_window(image, window_center, window_width, U=1.0, eps=(1.0 / 255.0))
     W = (2 / window_width) * ue
     b = ((-2 * window_center) / window_width) * ue
     z = W * image + b
-    z[z > 50] = 50
-    z[z < -50] = -50  
+    z[z > 60] = 60
+    z[z < -60] = -60  
     image = U / (1 + np.power(np.e, -1.0 * z))
     return image
 	
