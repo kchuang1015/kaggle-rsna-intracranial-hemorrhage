@@ -1,4 +1,4 @@
-workdir = './model/model_SqueezeNet1_1_WP8_WD'
+workdir = './model/model_se_resnext50_32_4d_WP8_WD'
 seed = 20
 apex = True
 

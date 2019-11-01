@@ -1,4 +1,4 @@
-workdir = './model/model_SqueezeNet1_1_WP2'
+workdir = './model/model_se_resnext50_32_4d_WP11_WD'
 seed = 20
 apex = True
 
@@ -24,7 +24,7 @@ optim = dict(
 )
 
 model = dict(
-    name='squeezenet1_0',
+    name='squeezenet1_1',
     pretrained='imagenet',
     n_output=6,
 )
@@ -48,7 +48,7 @@ contrast = dict(name='RandomBrightnessContrast', params=dict(brightness_limit=0.
 totensor = dict(name='ToTensor', params=dict(normalize=normalize))
 rotate = dict(name='Rotate', params=dict(limit=30, border_mode=0), p=0.7)
 
-window_policy = 2
+window_policy = 11
 
 data = dict(
     train=dict(
