@@ -25,7 +25,7 @@ optim = dict(
 
 model = dict(
     name='inceptionresnetv2',
-    pretrained='imagenet+background',
+    pretrained='imagenet',
     n_output=6,
 )
 
