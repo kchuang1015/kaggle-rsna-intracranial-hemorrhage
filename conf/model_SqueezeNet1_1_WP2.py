@@ -24,7 +24,7 @@ optim = dict(
 )
 
 model = dict(
-    name='squeezenet1_1',
+    name='squeezenet1_0',
     pretrained='imagenet',
     n_output=6,
 )
