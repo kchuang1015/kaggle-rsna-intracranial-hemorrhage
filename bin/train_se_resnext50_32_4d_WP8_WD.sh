@@ -1,5 +1,5 @@
-model=model_SqueezeNet1_1_WP2
-gpu=0
+model=model_se_resnext50_32_4d_WP8_WD
+gpu=3
 fold=0
 conf=./conf/${model}.py
 

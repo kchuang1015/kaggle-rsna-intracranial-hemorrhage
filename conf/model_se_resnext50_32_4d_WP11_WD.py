@@ -1,4 +1,4 @@
-workdir = './model/model_SqueezeNet1_1_WP11_WD_e-1'
+workdir = './model/model_se_resnext50_32_4d_WP11_WD'
 seed = 20
 apex = True
 
@@ -19,7 +19,7 @@ optim = dict(
     name='AdamW',
     params=dict(
         lr=1e-4,
-		weight_decay=1e-1,
+		weight_decay=1e-3,
     ),
 )
 
