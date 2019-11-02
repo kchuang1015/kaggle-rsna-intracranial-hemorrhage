@@ -132,6 +132,7 @@ def apply_window_policy(dicom, image, row, policy):
         if (dicom.BitsStored == 12) and (dicom.PixelRepresentation == 0) and (int(dicom.RescaleIntercept) > -100):
             misc.correct_dcm(dicom)        
         image1 = misc.rescale_image_normalization(image, dicom.RescaleSlope, dicom.RescaleIntercept)
+        image = misc.rescale_image(image, dicom.RescaleSlope, dicom.RescaleIntercept)
         image2 = (image - image.mean()) / image.std()
         image3 = misc.sigmoid_window(image, 40, 380) # soft tissues
         image = np.array([
