@@ -68,3 +68,9 @@ def get_dicom_meta(dicom):
         'RescaleSlope': float(dicom.RescaleSlope), # all same (1.0)
     }
 
+def correct_dcm(dcm):
+    x = dcm.pixel_array + 1000
+    px_mode = 4096
+    x[x>=px_mode] = x[x>=px_mode] - px_mode
+    dcm.PixelData = x.tobytes()
+    dcm.RescaleIntercept = -1000

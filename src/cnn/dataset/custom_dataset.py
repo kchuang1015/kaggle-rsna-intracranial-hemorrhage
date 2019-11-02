@@ -13,7 +13,7 @@ from ..utils.logger import log
 from ...utils import mappings, misc
 
 
-def apply_window_policy(image, row, policy):
+def apply_window_policy(dicom, image, row, policy):
     if policy == 1:
         image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
         image1 = misc.apply_window(image, 40, 80) # brain
@@ -128,6 +128,29 @@ def apply_window_policy(image, row, policy):
             image2,
             image3,
         ]).transpose(1,2,0)
+    elif policy == 12: # Data clean (WP12), max-min image normalization, z-score, sigmoid (~soft tissues)
+        if (dicom.BitsStored == 12) and (dicom.PixelRepresentation == 0) and (int(dicom.RescaleIntercept) > -100):
+            misc.correct_dcm(dicom)        
+        image1 = misc.rescale_image_normalization(image, dicom.RescaleSlope, dicom.RescaleIntercept)
+        image2 = (image - image.mean()) / image.std()
+        image3 = misc.sigmoid_window(image, 40, 380) # soft tissues
+        image = np.array([
+            image1,
+            image2,
+            image3,
+        ]).transpose(1,2,0)    
+    elif policy == 13: # Data clean (8), max-min image normalization, z-score, sigmoid (~soft tissues)
+        if (dicom.BitsStored == 12) and (dicom.PixelRepresentation == 0) and (int(dicom.RescaleIntercept) > -100):
+            misc.correct_dcm(dicom)        
+        image = misc.rescale_image(image, dicom.RescaleSlope, dicom.RescaleIntercept)
+        image1 = misc.sigmoid_window(image, 40, 80) # brain
+        image2 = misc.sigmoid_window(image, 80, 200) # subdural
+        image3 = misc.sigmoid_window(image, 40, 380) # soft tissues
+        image = np.array([
+            image1,
+            image2,
+            image3,
+        ]).transpose(1,2,0) 
     else:
         raise
 
@@ -179,7 +202,7 @@ class CustomDataset(torch.utils.data.Dataset):
         dicom = pydicom.dcmread(path)
         image = dicom.pixel_array
         #image = misc.rescale_image(image, row.RescaleSlope, row.RescaleIntercept)
-        image = apply_window_policy(image, row, self.cfg.window_policy)
+        image = apply_window_policy(dicom, image, row, self.cfg.window_policy)
 
         image = self.transforms(image=image)['image']
 
