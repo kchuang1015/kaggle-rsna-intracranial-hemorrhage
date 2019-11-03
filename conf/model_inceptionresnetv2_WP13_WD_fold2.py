@@ -48,7 +48,7 @@ contrast = dict(name='RandomBrightnessContrast', params=dict(brightness_limit=0.
 totensor = dict(name='ToTensor', params=dict(normalize=normalize))
 rotate = dict(name='Rotate', params=dict(limit=30, border_mode=0), p=0.7)
 
-window_policy = 12
+window_policy = 13
 
 data = dict(
     train=dict(
