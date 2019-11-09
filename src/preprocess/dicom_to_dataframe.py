@@ -110,7 +110,7 @@ def main():
     print('read %s (%d records)' % (args.input, len(df_input)))
 
     ids = group_id_by_label(df_input)
-    ids = remove_corrupted_images(ids)
+    #ids = remove_corrupted_images(ids)
     
     df_output = create_df(ids, args)
 
