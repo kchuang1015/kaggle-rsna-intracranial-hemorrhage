@@ -1,7 +1,7 @@
 model=model_inceptionresnetv2_WP2_WD_fold2
 gpu=2
 fold=2
-ep=4
+ep=3
 tta=6
 clip=1e-6
 conf=./conf/${model}.py
